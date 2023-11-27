@@ -1,0 +1,26 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package daw;
+
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
+/**
+ *
+ * @author FX506
+ */
+public class FuncionesProducto {
+    
+    public static double calcularIva(ProductoFresco p){
+        return p.getPrecioSinIva() + (p.getPrecioSinIva() * p.getIva().getPorcentaje());
+    }
+    
+    public static long diasCaducidad(ProductoFresco p){
+        return ChronoUnit.DAYS.between(LocalDate.now(), p.getFECHA_CADUCIDAD());
+    }
+    
+    
+    
+}
