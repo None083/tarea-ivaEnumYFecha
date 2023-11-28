@@ -21,6 +21,13 @@ public class FuncionesProducto {
         return ChronoUnit.DAYS.between(LocalDate.now(), p.getFECHA_CADUCIDAD());
     }
     
-    
+    public static double[] preciosIvaProducto(ProductoFresco[] arrayProductos){
+        double[] preciosIva = new double[arrayProductos.length];
+        
+        for (int i = 0; i < arrayProductos.length; i++) {
+            preciosIva[i] = calcularIva(arrayProductos[i]);
+        }
+        return preciosIva;
+    }
     
 }
