@@ -13,26 +13,24 @@ import java.util.Random;
  */
 public class ProductoFresco {
 
-    public static int getDIAS_CADUCIDAD_MAX() {
-        return DIAS_CADUCIDAD_MAX;
-    }
-
     private final LocalDate FECHA_CADUCIDAD;
     private static final int DIAS_CADUCIDAD_MAX = 45;
+    private static int contador;
+    
     private String id;
     private double precioSinIva;
     private String descripcion;
     private IVA iva;
 
-    public ProductoFresco(LocalDate FECHA_CADUCIDAD, String id, double precioSinIva, String descripcion) {
+    public ProductoFresco(LocalDate FECHA_CADUCIDAD, double precioSinIva, String descripcion) {
         
         if(FECHA_CADUCIDAD.isAfter(LocalDate.now().plusDays(DIAS_CADUCIDAD_MAX))){
             this.FECHA_CADUCIDAD = null;
         }else{
             this.FECHA_CADUCIDAD = FECHA_CADUCIDAD;
         }
-        
-        this.id = id;
+        contador++;
+        this.id = String.valueOf(contador);
         this.precioSinIva = precioSinIva;
         this.descripcion = descripcion;
         this.iva = ivaAleatorio();
@@ -45,7 +43,8 @@ public class ProductoFresco {
         }else{
             this.FECHA_CADUCIDAD = FECHA_CADUCIDAD;
         }
-        
+        contador++;
+        this.id = String.valueOf(contador);
         this.iva = ivaAleatorio();
     }
 

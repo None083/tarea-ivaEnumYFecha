@@ -18,7 +18,10 @@ public class FuncionesProducto {
     }
     
     public static long diasCaducidad(ProductoFresco p){
-        return ChronoUnit.DAYS.between(LocalDate.now(), p.getFECHA_CADUCIDAD());
+        if(p.getFECHA_CADUCIDAD() != null){
+            return ChronoUnit.DAYS.between(LocalDate.now(), p.getFECHA_CADUCIDAD());
+        }
+        return Long.MAX_VALUE;
     }
     
     public static double[] preciosIvaProducto(ProductoFresco[] arrayProductos){
